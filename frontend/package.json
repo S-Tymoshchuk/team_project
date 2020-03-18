@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^4.0.3",
     "connected-react-router": "^6.6.1",
     "history": "^4.10.1",
     "less": "^3.10.3",
