@@ -4,9 +4,7 @@ import {
   ClientProxyFactory,
   Transport,
 } from '@nestjs/microservices';
-import { UserLogin } from './user.model';
 import { CreateUserDto } from './dto/create-user.dto';
-import { Logger } from '@nestjs/common';
 
 @Injectable()
 export class UserService {
