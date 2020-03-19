@@ -3,4 +3,9 @@
 .loginPage {
   min-height: 100vh;
   position: relative;
+
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }

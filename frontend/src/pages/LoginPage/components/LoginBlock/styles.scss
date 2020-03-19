@@ -1,0 +1,59 @@
+@import "../../../../styles/constants/index.scss";
+@import "../../../../styles/_mixins.scss";
+
+.login-block {
+  min-height: 400px;
+  max-width: 365px;
+  width: 100%;
+
+  border: 1px solid black;
+
+  p {
+    &:nth-of-type(1) {
+      margin-bottom: 30px;
+
+      font-size: 30px;
+      font-weight: $fontWeightBold;
+    }
+    &:nth-of-type(2) {
+      text-align: center;
+    }
+    &:last-of-type {
+      font-size: 17px;
+      text-align: center;
+      font-weight: $fontWeightBase;
+      margin: 0;
+    }
+  }
+
+  &__input-bar {
+    span {
+      font-size: 12px;
+      line-height: 16px;
+
+      color: $comet;
+    }
+  }
+
+  &__button-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .ant-btn-primary {
+    width: 100%;
+    max-width: 144px;
+    height: 40px;
+
+    background-color: $silver;
+  }
+  .ant-btn-link {
+    width: 100%;
+  }
+
+  &__social-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}

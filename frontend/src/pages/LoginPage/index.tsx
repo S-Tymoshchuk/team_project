@@ -4,11 +4,13 @@ import "./styles.scss";
 
 // Components
 import { Header } from "./components/Header";
+import { LoginBlock } from "./components/LoginBlock";
 
 const LoginPage = () => {
   return (
     <div className="loginPage">
       <Header />
+      <LoginBlock />
     </div>
   );
 };
