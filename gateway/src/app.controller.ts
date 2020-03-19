@@ -1,7 +1,8 @@
 import { Controller } from '@nestjs/common';
 import { AppService } from './app.service';
-import { CreateUserDto } from '../../backend/src/user/dto/create-user.dto';
+
 import { MessagePattern } from '@nestjs/microservices';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller()
 export class AppController {
@@ -9,6 +10,7 @@ export class AppController {
 
   @MessagePattern('login')
   async login(createUserDto: CreateUserDto) {
+    console.log(createUserDto);
     return this.appService.login(createUserDto);
   }
 }
