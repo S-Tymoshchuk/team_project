@@ -1,14 +1,18 @@
-import types from 'prop-types';
-import React from 'react';
-import { ReactSVG } from 'react-svg';
+import types from "prop-types";
+import React from "react";
+import { ReactSVG } from "react-svg";
 
 // Styles
 
-import './styles.scss';
+import "./styles.scss";
 
 // ----------------
 
-export const SocialBlock = ({ links }) => {
+interface ISocialProps {
+  links: [{ icon: string; link: string }];
+}
+
+export const SocialBlock = ({ links }: ISocialProps) => {
   // Render
 
   return (
@@ -22,7 +26,7 @@ export const SocialBlock = ({ links }) => {
             rel="noopener noreferrer"
             key={index}
           >
-            <ReactSVG className="social-icon__icon" src={icon} />
+            {/* <ReactSVG className="social-icon__icon" src={icon} /> */}
           </a>
         );
       })}
@@ -35,7 +39,7 @@ export const SocialBlock = ({ links }) => {
 // Type of props
 
 SocialBlock.propTypes = {
-  links: types.array.isRequired,
+  links: types.array.isRequired
 };
 
 // Default value for props
