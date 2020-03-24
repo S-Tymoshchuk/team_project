@@ -11,9 +11,9 @@ export const Header = () => {
   return (
     <div className="header">
       <div className="header__content">
-        <span>Don't have an account ?</span>
-        <Link to="/signup">
-          <a>Sing Up</a>
+        <span>Already have an account?</span>
+        <Link to="/login">
+          <a>Log In</a>
         </Link>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import types from "prop-types";
 import React from "react";
-import { ReactSVG } from "react-svg";
+// import { ReactSVG } from "react-svg";
 
 // Styles
 
@@ -9,7 +9,7 @@ import "./styles.scss";
 // ----------------
 
 interface ISocialProps {
-  links: [{ icon: string; link: string }];
+  links: [{ link: string; icon: string }];
 }
 
 export const SocialBlock = ({ links }: ISocialProps) => {
@@ -17,7 +17,7 @@ export const SocialBlock = ({ links }: ISocialProps) => {
 
   return (
     <div className="social-block">
-      {links.map(({ icon, link }, index) => {
+      {links.map(({ link, icon }, index) => {
         return (
           <a
             className="social-icon__wrapper"

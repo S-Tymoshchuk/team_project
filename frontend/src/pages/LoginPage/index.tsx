@@ -8,7 +8,7 @@ import { LoginBlock } from "./components/LoginBlock";
 
 const LoginPage = () => {
   return (
-    <div className="loginPage">
+    <div className="login-page">
       <Header />
       <LoginBlock />
     </div>
