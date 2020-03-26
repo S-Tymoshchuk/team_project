@@ -13,7 +13,7 @@ export const Header = () => {
       <div className="header__content">
         <span>Don't have an account ?</span>
         <Link to="/signup">
-          <a>Sing Up</a>
+          Sing Up
         </Link>
       </div>
     </div>
