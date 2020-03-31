@@ -43,10 +43,14 @@
       color: $black;
     }
     .ant-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       width: 100%;
       max-width: 158px;
       height: 40px;
       background-color: $ghostWhite;
+      text-align: center;
 
       &-primary {
         width: 100%;

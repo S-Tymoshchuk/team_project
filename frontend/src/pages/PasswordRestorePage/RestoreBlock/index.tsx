@@ -29,23 +29,22 @@ export const RestoreBlock: React.FC = () => {
     <div className="restore-block">
       <p>Forgot Your Password?</p>
 
-      <div className="restore-block__input-bar">
-        <span>E-mail</span>
-        <div>
-          <input
-            onKeyPress={keyPressHandler}
-            ref={ref}
-            placeholder="enter E-mail"
-          ></input>
+      <form action="http://localhost:3000/" method="post">
+        <div className="restore-block__input-bar">
+          <span>E-mail</span>
+          <div>
+            <input
+              onKeyPress={keyPressHandler}
+              ref={ref}
+              placeholder="enter E-mail"
+            ></input>
+          </div>
         </div>
-      </div>
-      <div className="restore-block__button-bar">
-        <Button type="primary">Reset</Button>
-
-        <Button>
-          <Link to="/login">Back</Link>
-        </Button>
-      </div>
+        <div className="restore-block__button-bar">
+          <Button type="primary">Reset</Button>
+          <Button href="/login">Back</Button>
+        </div>
+      </form>
     </div>
   );
 };

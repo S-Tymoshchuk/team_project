@@ -1,0 +1,11 @@
+@import "../../../../styles/constants/index.scss";
+@import "../../../../styles/_mixins.scss";
+
+.agenda-block {
+  width: 100%;
+  max-width: 445px;
+  min-height: 100vh;
+
+  color: $white;
+  background-color: $gainsboro;
+}

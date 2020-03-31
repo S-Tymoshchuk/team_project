@@ -28,49 +28,50 @@ export const SignUpBlock: React.FC = () => {
   return (
     <div className="sign-block">
       <p>Sing Up</p>
-
-      <div className="sign-block__input-bar">
-        <span>Name</span>
-        <div>
-          <input
-            onKeyPress={keyPressHandler}
-            ref={ref}
-            placeholder="Your Name"
-          ></input>
+      <form action="http://localhost:3000/" method="post">
+        <div className="sign-block__input-bar">
+          <span>Name</span>
+          <div>
+            <input
+              onKeyPress={keyPressHandler}
+              ref={ref}
+              placeholder="Your Name"
+            ></input>
+          </div>
+          <span>E-mail</span>
+          <div>
+            <input
+              onKeyPress={keyPressHandler}
+              ref={ref}
+              placeholder="enter E-mail"
+            ></input>
+          </div>
+          <span>Password</span>
+          <div>
+            <input
+              onKeyPress={keyPressHandler}
+              ref={ref}
+              placeholder="enter password"
+            ></input>
+          </div>
+          <span>Confirm Password</span>
+          <div>
+            <input
+              onKeyPress={keyPressHandler}
+              ref={ref}
+              placeholder="enter password again"
+            ></input>
+          </div>
         </div>
-        <span>E-mail</span>
-        <div>
-          <input
-            onKeyPress={keyPressHandler}
-            ref={ref}
-            placeholder="enter E-mail"
-          ></input>
+        <div className="sign-block__button-bar">
+          <Button type="primary">Sing Up Now</Button>
+          <p>or</p>
+          <div className="sign-block__social-bar">
+            <FacebookOutlined />
+            <GoogleOutlined />
+          </div>
         </div>
-        <span>Password</span>
-        <div>
-          <input
-            onKeyPress={keyPressHandler}
-            ref={ref}
-            placeholder="enter password"
-          ></input>
-        </div>
-        <span>Confirm Password</span>
-        <div>
-          <input
-            onKeyPress={keyPressHandler}
-            ref={ref}
-            placeholder="enter password again"
-          ></input>
-        </div>
-      </div>
-      <div className="sign-block__button-bar">
-        <Button type="primary">Sing Up Now</Button>
-        <p>or</p>
-        <div className="sign-block__social-bar">
-          <FacebookOutlined />
-          <GoogleOutlined />
-        </div>
-      </div>
+      </form>
     </div>
   );
 };
