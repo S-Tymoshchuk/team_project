@@ -1,23 +1,37 @@
 import * as mongoose from 'mongoose';
+import * as uniqueValidator from 'mongoose-unique-validator';
 
-export const UserSchema = new mongoose.Schema({
+export const  UserSchema = new mongoose.Schema({
   firstName: {
     type: String,
+    required: true
   },
   lastName: {
     type: String,
+    required: true
   },
   email: {
     type: String,
+    required: true,
+    unique: true,
+    index: true,
+    trim: true,
+    uniqueCaseInsensitive: true
   },
   password: {
     type: String,
+    required: true
   },
-  timeZona: {
+  timeZone: {
     type: String,
+    default: null
   },
   avatar: {
-    type: String
+    type: String,
+    default: null
   }
 
+});
+UserSchema.plugin(uniqueValidator, {
+  message: 'Error, expected {PATH} to be unique.'
 });

@@ -1,9 +1,11 @@
-export interface IUser {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  timezone: string;
-  avatar: string;
-  avatarId: number;
+import { Document } from 'mongoose';
+
+export interface IUser extends Document {
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly email: string;
+  readonly password: string;
+  readonly timezone: string;
+  readonly avatar: string;
+  readonly avatarId: number;
 }
