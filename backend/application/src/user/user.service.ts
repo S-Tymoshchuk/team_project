@@ -1,9 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {
-  ClientProxy,
-  ClientProxyFactory,
-  Transport,
-} from '@nestjs/microservices';
+import { ClientProxy, ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { CreateUserDto, ILoginUserDto } from './dto/create-user.dto';
 
 @Injectable()
@@ -20,15 +16,16 @@ export class UserService {
     });
   }
 
-  public login(loginUserDto:ILoginUserDto) {
-    return this.client.send('login', loginUserDto);
-  }
-
   public register(createUserDto: CreateUserDto) {
     return this.client.send<string, CreateUserDto>('register', createUserDto);
+  }
+
+  public login(loginUserDto: ILoginUserDto) {
+    return this.client.send('login', loginUserDto);
   }
 
   public forgotPassword(email) {
     return this.client.send('forgotPassword', email);
   }
+
 }

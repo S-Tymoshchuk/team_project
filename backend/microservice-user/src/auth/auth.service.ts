@@ -9,13 +9,14 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async login(loginUser)/*: Promise<string>*/ {
+  async login(loginUser): Promise<string> {
     const user = await this.usersService.checkPassword(loginUser);
     if (!user) {
       throw new UnauthorizedException();
     }
     const createToken = {
       email: user.email,
+      password: user.password
     };
 
     const token = await this.jwtService.sign(createToken, { expiresIn: '1d' });

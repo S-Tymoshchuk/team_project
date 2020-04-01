@@ -1,7 +1,3 @@
-export class ILoginUserDto {
-  username: string;
-  password: string;
-}
 export class CreateUserDto {
   firstName: string;
   lastName: string;
@@ -10,4 +6,9 @@ export class CreateUserDto {
   timezone: string;
   avatar: string;
   avatarId: number;
+}
+
+export class ILoginUserDto {
+  email: string;
+  password: string;
 }
