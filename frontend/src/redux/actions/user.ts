@@ -4,16 +4,17 @@ import { IUser } from '../../types';
 
 enum Type {
     SET_USER = 'SET_USER',
-    SET_LOGIN = 'SET_LOGIN'
+    SET_LOGIN_AND_PASS="SET_LOGIN_AND_PASS"
 }
 
 const setUser = createAction<IUser>(Type.SET_USER);
-const setLogin = createAction<IUser>(Type.SET_LOGIN);
+const setLoginAndPass = createAction<IUser>(Type.SET_LOGIN_AND_PASS);
 
 export const UserActions = {
     Type,
-    setLogin,
+    setLoginAndPass,
     setUser,
 }
 
 export type UserActions = Omit<typeof UserActions, 'Type'>;
+

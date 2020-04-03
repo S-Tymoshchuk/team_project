@@ -1,29 +1,19 @@
-import React, { useRef } from "react";
+import React from "react";
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
-//Components
-// import { SocialBlock } from "../SocialBlock/index";
-// import { SimpleInput } from "../../../../components/ui/SimpleInput";
-// import { Button } from "antd";
 import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-//
-
-//Static
-// import { socialLinks } from "./data";
-//Styles
 import "./styles.scss";
-
-
+import {connect} from "react-redux";
 import { Form, Input, Button, Checkbox } from 'antd';
+import {IRootReducer} from './../../../../redux/reducers/state';
 
-export const LoginBlock: React.FC = () => {
-  const ref = useRef<HTMLInputElement>(null);
+type Props = {
+    email: string;
+    pass: string;
+    newText: any;
+}
 
-  const keyPressHandler = (event: React.KeyboardEvent) => {
-    if (event.key === "Enter") {
-      console.log(ref.current!.value);
-    }
-  };
+export const LoginBlock= (props:Props) => {
 
     const onFinish = (values:any) => {
         console.log('Success:', values);
@@ -50,7 +40,7 @@ export const LoginBlock: React.FC = () => {
               name="username"
               rules={[{ required: true, message: 'Please input your username!' }]}
           >
-              <Input placeholder="enter e-mail"/>
+              <Input placeholder={props.email}/>
           </Form.Item>
 
           <span>Password</span>
@@ -85,21 +75,13 @@ export const LoginBlock: React.FC = () => {
   );
 };
 
-//...................................
-// Type of props
 
-// SimpleInput.propTypes = {
-//   changeHandler: types.func.isRequired,
-//   placeholder: types.string,
-//   value: types.string.isRequired,
-//   name: types.string.isRequired,
-//   icon: types.node
-// };
+const mapStateToProps = (state: IRootReducer) => {
+    return {
+        email: state.user.email,
+        pass: state.user.pass,
+        newText: state.user.newText
+    }
+}
 
-// Default value for props
-
-// SimpleInput.defaultProps = {
-//   placeholder: "Enter",
-//   value: "",
-//   type: "text"
-// };
+export default connect(mapStateToProps)(LoginBlock);

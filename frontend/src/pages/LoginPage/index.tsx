@@ -1,10 +1,10 @@
 import React from "react";
 import "./styles.scss";
+import LoginBlock from "./components/LoginBlock/index"
 // import Button from "antd/es/button";
-
 // Components
 import { Header } from "./components/Header";
-import { LoginBlock } from "./components/LoginBlock";
+
 
 const LoginPage = () => {
   return (

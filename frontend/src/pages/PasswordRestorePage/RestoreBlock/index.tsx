@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import {Link} from "react-router-dom";
 
 //Components
 // import { SocialBlock } from "../SocialBlock/index";
 // import { SimpleInput } from "../../../../components/ui/SimpleInput";
-import { Button } from "antd";
-import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
+import {Button, Form, Input} from "antd";
+import {FacebookOutlined, GoogleOutlined} from "@ant-design/icons";
 //
 
 //Static
@@ -15,39 +15,50 @@ import "./styles.scss";
 
 //............................
 
-export const RestoreBlock: React.FC = () => {
-  const ref = useRef<HTMLInputElement>(null);
+export const RestoreBlock = () => {
 
-  const keyPressHandler = (event: React.KeyboardEvent) => {
-    if (event.key === "Enter") {
-      console.log(ref.current!.value);
-    }
-  };
+    const onFinish = (values: any) => {
+        console.log('Success:', values);
+    };
 
-  //Render
-  return (
-    <div className="restore-block">
-      <p>Forgot Your Password?</p>
+    const onFinishFailed = (errorInfo: any) => {
+        console.log('Failed:', errorInfo);
+    };
 
-      <div className="restore-block__input-bar">
-        <span>E-mail</span>
-        <div>
-          <input
-            onKeyPress={keyPressHandler}
-            ref={ref}
-            placeholder="enter E-mail"
-          ></input>
+    //Render
+    return (
+        <div className="restore-block">
+            <div>
+                <Form
+                    name="basic"
+                    initialValues={{remember: true}}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                >
+                    <p>Forgot Your Password?</p>
+
+                    <div className="restore-block__input-bar">
+                        <span>E-mail</span>
+                        <Form.Item
+                            // label="Username"
+                            name="username"
+                            rules={[{ required: true, message: 'Please input your Email!' }]}
+                        >
+                            <Input placeholder="Enter your Email"/>
+                        </Form.Item>
+                    </div>
+                    <div className="restore-block__button-bar">
+                        <Button type="primary" htmlType="submit">
+                            Reset
+                        </Button>
+                        <Button>
+                            <Link to="/login">Back</Link>
+                        </Button>
+                    </div>
+                </Form>
+            </div>
         </div>
-      </div>
-      <div className="restore-block__button-bar">
-        <Button type="primary">Reset</Button>
-
-        <Button>
-          <Link to="/login">Back</Link>
-        </Button>
-      </div>
-    </div>
-  );
+    );
 };
 
 //...................................
