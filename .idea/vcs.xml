@@ -4,6 +4,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/backend/application" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/backend/gateway" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/backend/microservice-post" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/backend/microservice-token" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/backend/microservice-user" vcs="Git" />
   </component>
