@@ -5,11 +5,14 @@ import { UserService } from './user/user.service';
 import { UserModule } from './user/user.module';
 import { PostService } from './post/post.service';
 import { PostModule } from './post/post.module';
+import { FilesController } from './files/files.controller';
+import { FilesService } from './files/files.service';
+import { FilesModule } from './files/files.module';
 
 @Module({
-  imports: [UserModule, PostModule],
-  controllers: [UserController, PostController],
-  providers: [UserService, PostService],
+  imports: [UserModule, PostModule, FilesModule],
+  controllers: [UserController, PostController, FilesController],
+  providers: [UserService, PostService, FilesService],
 })
 export class AppModule {
 }

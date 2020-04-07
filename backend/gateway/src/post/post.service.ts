@@ -17,6 +17,7 @@ export class PostService {
   }
 
   createPost(contentPost: IPost) {
-    return  this.client.send<string, IPost>('createPost', contentPost).toPromise();
+    return this.client.send<string, IPost>('createPost', contentPost).toPromise();
   }
+
 }
