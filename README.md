@@ -14,7 +14,7 @@
 запуск сервера npm run start:dev
 
 
-EndPoints:
-method post:  http://localhost:3001/user/register  - регистрация
-method post:  http://localhost:3001/user/login  - авторизация
-method post:  http://localhost:3001/user/forgot  - восстановление пароля
+<div>EndPoints:</div>
+<div>method post:  http://localhost:3001/user/register  - регистрация</div>
+<div>method post:  http://localhost:3001/user/login  - авторизация</div>
+<div>method post:  http://localhost:3001/user/forgot  - восстановление пароля</div>
