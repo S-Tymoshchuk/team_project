@@ -15,6 +15,6 @@
 
 <div></div>
 <div>EndPoints:</div>
-<div>method <b>post</b>:  http://localhost:3001/user/register  - регистрация</div>
-<div>method <b>post</b>:  http://localhost:3001/user/login  - авторизация</div>
-<div>method <b>post</b>:  http://localhost:3001/user/forgot  - восстановление пароля</div>
+<div>method <b>post</b>:  <i>http://localhost:3001/user/register</i>  - регистрация</div>
+<div>method <b>post</b>:  <i>http://localhost:3001/user/login</i>  - авторизация</div>
+<div>method <b>post</b>:  <i>http://localhost:3001/user/forgot</i>  - восстановление пароля</div>
