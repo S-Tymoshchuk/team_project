@@ -1,4 +1,4 @@
 export interface IPost {
-  title: string;
-  body: string;
+ readonly title: string;
+ readonly body: string;
 }

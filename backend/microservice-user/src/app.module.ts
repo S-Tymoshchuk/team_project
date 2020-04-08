@@ -12,7 +12,7 @@ import { configModule } from '../configure.root';
   imports: [
     UsersModule,
     MongooseModule.forRoot('mongodb://localhost:27017', {
-      useNewUrlParser: true,
+      useNewUrlParser: true,  useUnifiedTopology: true
     }),
     AuthModule,
     configModule

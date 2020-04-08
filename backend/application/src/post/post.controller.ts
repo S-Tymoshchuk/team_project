@@ -1,8 +1,8 @@
-import { Controller, Post, Body, UploadedFile, UseInterceptors, UploadedFiles, Query } from '@nestjs/common';
+import { Controller, Post, Body, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { PostService } from './post.service';
 import { IPost } from './interfaces/post.interface';
-import { AnyFilesInterceptor, FileFieldsInterceptor, FileInterceptor } from '@nestjs/platform-express';
-import { log } from 'util';
+import { FileInterceptor } from '@nestjs/platform-express';
+
 
 @Controller('post')
 export class PostController {

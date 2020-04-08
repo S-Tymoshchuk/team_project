@@ -1,15 +1,14 @@
 import { Controller } from '@nestjs/common';
-import * as cloudinary from 'cloudinary';
 import { MessagePattern } from '@nestjs/microservices';
-import { IPost } from './interfaces/post.interface';
+import { IPost } from './interfaces/post-interface';
+import { PostService } from './post.service';
 
-@Controller()
+@Controller('post')
 export class PostController {
-
-  @MessagePattern('createPost')
-  async createPost(contentPost: IPost) {
-    console.log(contentPost);
-    return contentPost
+  constructor(private postService: PostService) {
   }
-
+  @MessagePattern('createPost')
+  async createPost(post):Promise<IPost>{
+    return await this.postService.createPost(post)
+  }
 }
