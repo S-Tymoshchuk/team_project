@@ -6,32 +6,39 @@ import "./styles.scss";
 import {connect} from "react-redux";
 import { Form, Input, Button, Checkbox } from 'antd';
 import {IRootReducer} from './../../../../redux/reducers/state';
+import {UserActions} from "../../../../redux/actions";
+
 
 type Props = {
     email: string;
     pass: string;
     newText: any;
+    dispatch:any,
+    counter:number,
 }
 
 export const LoginBlock= (props:Props) => {
 
     const onFinish = (values:any) => {
+        // @ts-ignore
+        props.dispatch(UserActions.increment(values.username,values.password));
         console.log('Success:', values);
     };
 
     const onFinishFailed = (errorInfo:any) => {
         console.log('Failed:', errorInfo);
     };
-
+console.log(props.newText);
   //Render
   return (
     <div className="login-block">
-        <p>Log in</p>
+        <p>Log in{props.counter}</p>
       <Form
             name="basic"
             initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
+
       >
           <div className="login-block__input-bar">
           <span>E-mail</span>
@@ -80,7 +87,8 @@ const mapStateToProps = (state: IRootReducer) => {
     return {
         email: state.user.email,
         pass: state.user.pass,
-        newText: state.user.newText
+        newText: state.user.newText,
+        counter:state.user.counter
     }
 }
 

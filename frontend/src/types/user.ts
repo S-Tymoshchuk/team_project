@@ -9,6 +9,8 @@ export interface IUser {
     email: string;
     pass: string;
     newText: any;
+    counter:any;
+    amount:any
     // status: string;
     // avatar: string;
     // lastName: string;
@@ -18,4 +20,10 @@ export interface IUser {
     // profession: string;
     // phone: string;
     // roles: Array<string>;
+}
+
+export interface ILogin {
+    email:string,
+    password:string
+    
 }
