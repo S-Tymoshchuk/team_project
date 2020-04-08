@@ -9,11 +9,11 @@
 запуск сервера <b>npm run start:dev</b></div></div>
 
 
-<div><b>Открыть новый терминал:<b>
+<div><b>Открыть новый терминал:</b>
 перейти в папку cd backend/microservice-user <div> comand <b>npm install or yarn install</b>
-  запуск сервера <b>npm run start:dev</b></div></div>
+запуск сервера <b>npm run start:dev</b></div></div>
 
-
+<div></div>
 <div>EndPoints:</div>
 <div>method <b>post</b>:  http://localhost:3001/user/register  - регистрация</div>
 <div>method <b>post</b>:  http://localhost:3001/user/login  - авторизация</div>
