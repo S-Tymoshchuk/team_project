@@ -13,3 +13,12 @@ export interface IUser {
   timeZone: string;
   avatar: string;
 }
+
+export interface IisFetching {
+  isFetching: boolean;
+}
+
+export interface IState {
+  isFetching: boolean;
+  user: IUser | null;
+}
