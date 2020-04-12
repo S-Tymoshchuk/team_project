@@ -3,36 +3,21 @@ import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import "./styles.scss";
-import {connect} from "react-redux";
-import { Form, Input, Button, Checkbox } from 'antd';
-import {IRootReducer} from './../../../../redux/reducers/state';
-import {UserActions} from "../../../../redux/actions";
+import { Form, Input, Button} from 'antd';
 
-
-type Props = {
-    email: string;
-    pass: string;
-    newText: any;
-    dispatch:any,
-    counter:number,
-}
-
-export const LoginBlock= (props:Props) => {
+export const LoginBlock= () => {
 
     const onFinish = (values:any) => {
-        // @ts-ignore
-        props.dispatch(UserActions.increment(values.username,values.password));
         console.log('Success:', values);
     };
 
     const onFinishFailed = (errorInfo:any) => {
         console.log('Failed:', errorInfo);
     };
-console.log(props.newText);
   //Render
   return (
     <div className="login-block">
-        <p>Log in{props.counter}</p>
+        <p>Log in</p>
       <Form
             name="basic"
             initialValues={{ remember: true }}
@@ -43,11 +28,10 @@ console.log(props.newText);
           <div className="login-block__input-bar">
           <span>E-mail</span>
           <Form.Item
-              // label="Username"
               name="username"
               rules={[{ required: true, message: 'Please input your username!' }]}
           >
-              <Input placeholder={props.email}/>
+              <Input placeholder="enter email"/>
           </Form.Item>
 
           <span>Password</span>
@@ -82,14 +66,4 @@ console.log(props.newText);
   );
 };
 
-
-const mapStateToProps = (state: IRootReducer) => {
-    return {
-        email: state.user.email,
-        pass: state.user.pass,
-        newText: state.user.newText,
-        counter:state.user.counter
-    }
-}
-
-export default connect(mapStateToProps)(LoginBlock);
+export default LoginBlock;

@@ -15,7 +15,7 @@ export default class MainRouter extends Component {
       <Router history={history}>
         <Suspense fallback={<Fallback />}>
           <Switch>
-            <Route path="/login" component={LoginPage} />
+            <Route path="/" component={LoginPage} />
             <Route path="/signup" component={SignUpPage} />
             <Route path="/password" component={PasswordRestorePage} />
           </Switch>
