@@ -16,10 +16,10 @@ export class AuthService {
     }
     const createToken = {
       email: user.email,
-      password: user.password
+      id: user._id
     };
 
-    const token = await this.jwtService.sign(createToken, { expiresIn: '1d' });
+    const token = await this.jwtService.sign(createToken, { expiresIn: '7d' });
     return token;
   }
 }

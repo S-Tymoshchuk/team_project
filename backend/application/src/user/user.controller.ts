@@ -27,7 +27,7 @@ export class UserController {
   @UseGuards(AuthGuard())
   @Post('test')
   test(@GetUser() user: any) {
-    console.log('hello');
+    console.log(user);
   }
 
 }

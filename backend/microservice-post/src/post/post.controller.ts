@@ -7,8 +7,14 @@ import { PostService } from './post.service';
 export class PostController {
   constructor(private postService: PostService) {
   }
+
   @MessagePattern('createPost')
   async createPost(post):Promise<IPost>{
     return await this.postService.createPost(post)
+  }
+
+  @MessagePattern('addPost')
+  async addPost(id){
+    return await  this.postService.addPost(id)
   }
 }

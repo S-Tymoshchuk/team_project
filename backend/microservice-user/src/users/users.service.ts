@@ -64,8 +64,8 @@ export class UsersService {
 
   sanitizeUser(user) {
     const sanitized = user.toObject();
-    //delete sanitized['password'];
-    delete sanitized['_id'];
+    delete sanitized['password'];
+    //delete sanitized['_id'];
     return sanitized;
   }
 }

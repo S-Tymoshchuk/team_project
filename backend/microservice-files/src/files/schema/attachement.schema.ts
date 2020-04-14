@@ -2,6 +2,9 @@ import * as mongoose from 'mongoose';
 
 
 export const AttachmentSchema = new mongoose.Schema({
+  user: {
+    type: String,
+  },
   link: {
     type: String,
     required: true,
@@ -17,5 +20,8 @@ export const AttachmentSchema = new mongoose.Schema({
   createdAt: {
     type: String,
     required: true,
+  },
+  postId: {
+    type: String,
   },
 });

@@ -4,6 +4,6 @@ import { configModule } from '../configure.root';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [FilesModule, configModule, MongooseModule.forRoot('mongodb://localhost/27017',{useNewUrlParser: true, useUnifiedTopology: true})]
+  imports: [FilesModule, configModule, MongooseModule.forRoot('mongodb://localhost:27017/test',{useNewUrlParser: true, useUnifiedTopology: true})]
 })
 export class AppModule {}

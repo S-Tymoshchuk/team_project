@@ -1,5 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ClientProxy, ClientProxyFactory, Transport } from '@nestjs/microservices';
+import { IAttachmentResult } from 'src/post/interfaces/attachment-result';
+import { IFileRemoveInterface } from './interface/file-remove.interface';
+
 
 @Injectable()
 export class FilesService {
@@ -17,6 +20,23 @@ export class FilesService {
   }
 
   async uploadFiles(files) {
-    return this.client.send('uploadFiles', files);
+    try {
+      return this.client.send('uploadFiles', files);
+    } catch (e) {
+      throw new e;
+    }
   }
+
+  // async createAttachment(postId){
+  //   return this.client.send('createAttachment', postId)
+  // }
+
+  async attachmentSend(param: IAttachmentResult) {
+    return this.client.send('attachmentSend', param).toPromise();
+  }
+
+  async removeFiles(file: IFileRemoveInterface) {
+    return this.client.send('removeFile', file).toPromise();
+  }
+
 }

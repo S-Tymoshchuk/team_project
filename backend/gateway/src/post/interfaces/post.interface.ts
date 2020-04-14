@@ -1,4 +1,5 @@
 export class IPost {
   title: string;
-  body:string;
+  body: string;
+  fileId:string[];
 }

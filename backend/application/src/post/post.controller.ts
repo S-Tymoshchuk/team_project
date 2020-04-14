@@ -1,7 +1,10 @@
-import { Controller, Post, Body, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Controller, Post, Body, UploadedFile, UseInterceptors, Get, UseGuards } from '@nestjs/common';
 import { PostService } from './post.service';
 import { IPost } from './interfaces/post.interface';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from '../user/get-user-decorator';
+import { IFileRemoveInterface } from './interfaces/file-remove.interface';
 
 
 @Controller('post')
@@ -9,15 +12,34 @@ export class PostController {
   constructor(private postsService: PostService) {
   }
 
+  @UseGuards(AuthGuard())
   @Post('create')
-  async createPost(@Body() postContent: IPost) {
-    return this.postsService.createPost(postContent);
+  async createPost(@GetUser() user, @Body() postContent: IPost) {
+    const { _id } = user;
+    const content = { ...postContent, _id };
+    return this.postsService.createPost(content);
   }
 
 
+  @UseGuards(AuthGuard())
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  async uploadFiles(@UploadedFile()file) {
-    return this.postsService.uploadFiles(file);
+  async uploadFiles(@GetUser() user, @UploadedFile()file) {
+    const { _id } = user;
+    const content = { ...file, _id };
+    return this.postsService.uploadFiles(content);
   }
+
+  @Post('remove')
+  async removeFiles(@Body()fileId:IFileRemoveInterface) {
+    return this.postsService.removeFiles(fileId)
+  }
+
+  @UseGuards(AuthGuard())
+  @Get('add')
+  async addPost(@GetUser() user) {
+    const id = user._id;
+    return this.postsService.addPost(id);
+  }
+
 }

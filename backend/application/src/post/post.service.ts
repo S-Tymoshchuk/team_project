@@ -23,4 +23,13 @@ export class PostService {
   public uploadFiles(files) {
     return this.client.send('uploadFiles', files).toPromise();
   }
+
+  public removeFiles(file) {
+    return this.client.send('removeFile', file).toPromise();
+  }
+
+  public addPost(id) {
+    return this.client.send('addPost', id).toPromise();
+  }
+
 }

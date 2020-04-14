@@ -5,13 +5,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { configModule } from '../configure.root';
 
-
-
-
 @Module({
   imports: [
     UsersModule,
-    MongooseModule.forRoot('mongodb://localhost:27017', {
+    MongooseModule.forRoot('mongodb://localhost:27017/test', {
       useNewUrlParser: true,  useUnifiedTopology: true
     }),
     AuthModule,
