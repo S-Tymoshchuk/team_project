@@ -1,4 +1,4 @@
-import facebookIcon from "../../../../assets/icons/facebook-icon.svg";
+import facebookIcon from "../../../../../assets/icons/facebook-icon.svg";
 
 export const socialLinks = [
   {

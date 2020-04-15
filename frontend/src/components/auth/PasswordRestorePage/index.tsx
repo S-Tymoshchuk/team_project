@@ -8,7 +8,7 @@ import "./styles.scss";
 
 import { RestoreBlock } from "./RestoreBlock";
 
-const PasswordRestorePage = () => {
+const PasswordRestorePageContainer = () => {
   return (
     <div className="password-page">
       <RestoreBlock />
@@ -16,4 +16,4 @@ const PasswordRestorePage = () => {
   );
 };
 
-export default PasswordRestorePage;
+export default PasswordRestorePageContainer;

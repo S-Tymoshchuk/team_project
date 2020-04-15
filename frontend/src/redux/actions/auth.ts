@@ -9,7 +9,7 @@ enum Type {
 
 const setAuthInfo = createAction<IAuth>(Type.SET_AUTH);
 const signIn = createAction<ILogin>(Type.SIGN_IN);
-const signUp = createAction<ISignUp>(Type.SIGN_UP);
+const signUp = createAction<ISignUp>(Type.SIGN_UP); //(payload)=>({type:"",payload, error})
 
 export const AuthActions = {
     Type,

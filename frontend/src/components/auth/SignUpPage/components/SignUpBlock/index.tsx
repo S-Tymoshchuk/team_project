@@ -15,7 +15,7 @@ import "./styles.scss";
 
 //............................
 
-export const SignUpBlock = () => {
+const SignUpBlock = () => {
 
   const onFinish = (values:any) => {
     console.log('Success:', values);
@@ -85,6 +85,8 @@ export const SignUpBlock = () => {
         </div>
     );
 };
+
+export default SignUpBlock;
 
 //...................................
 // Type of props

@@ -1,18 +1,18 @@
 import React from "react";
 import "./styles.scss";
-import LoginBlock from "./components/LoginBlock/index"
 // import Button from "antd/es/button";
 // Components
 import { Header } from "./components/Header";
+import LoginContainer from "../../../containers/auth/login";
 
 
-const LoginPage = () => {
+const LoginPageContainer = () => {
   return (
     <div className="login-page">
       <Header />
-      <LoginBlock />
+      <LoginContainer />
     </div>
   );
 };
 
-export default LoginPage;
+export default LoginPageContainer;

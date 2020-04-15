@@ -4,9 +4,9 @@ import "./styles.scss";
 // Components
 
 import { Header } from "./components/Header";
-import { SignUpBlock } from "./components/SignUpBlock";
+import SignUpBlock from "./components/SignUpBlock";
 
-const SignUpPage = () => {
+const SignUpPageContainer = () => {
   return (
     <div className="sign-page">
       <Header />
@@ -15,4 +15,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignUpPageContainer;
