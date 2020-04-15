@@ -13,7 +13,7 @@ export class UserController {
   async register(@Body()createUserDto: CreateUserDto) {
     return this.userService.register(createUserDto);
   }
-  @UseGuards(AuthGuard())
+
   @Post('login')
   async login(@Body() loginUser: ILoginUserDto) {
     return this.userService.login(loginUser);

@@ -7,6 +7,7 @@ import { mailConfig } from './mail-message/mail.config';
 import * as bcrypt from 'bcrypt';
 import * as _ from 'lodash';
 import * as passportGenerator from 'password-generator';
+import { IForgotEmailDto } from './interfaces/forgot-email.dto';
 
 @Injectable()
 export class UsersService {
@@ -21,7 +22,7 @@ export class UsersService {
     return await createdUser.save();
   }
 
-  async forgotPassword(payload: string)/*: Promise<avoid>*/ {
+  async forgotPassword(payload: IForgotEmailDto):Promise<IForgotEmailDto> {
     const userForgot = await this.findByEmail(payload);
     const { email, firstName } = userForgot;
     const generatePassword = await passportGenerator(12, false);
@@ -32,6 +33,7 @@ export class UsersService {
       { $set: { password: hashPassword } },
     );
     await mailConfig(email, generatePassword, firstName);
+    return res;
   }
 
   async checkPassword(payload: any) {
@@ -62,8 +64,8 @@ export class UsersService {
 
   sanitizeUser(user) {
     const sanitized = user.toObject();
-    //delete sanitized['password'];
-    delete sanitized['_id'];
+    delete sanitized['password'];
+    //delete sanitized['_id'];
     return sanitized;
   }
 }
