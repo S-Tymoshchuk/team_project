@@ -8,9 +8,10 @@ import { PostModule } from './post/post.module';
 import { FilesController } from './files/files.controller';
 import { FilesService } from './files/files.service';
 import { FilesModule } from './files/files.module';
+import { SocialConnectModule } from './social-connect/social-connect.module';
 
 @Module({
-  imports: [UserModule, PostModule, FilesModule],
+  imports: [UserModule, PostModule, FilesModule, SocialConnectModule],
   controllers: [UserController, PostController, FilesController],
   providers: [UserService, PostService, FilesService],
 })
