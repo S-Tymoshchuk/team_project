@@ -1,19 +1,9 @@
-import { handleActions } from "redux-actions";
-import { IState } from "../../types";
-import { IUser } from "../../types";
-import { UserActions } from "../actions";
+import { handleActions } from 'redux-actions';
+import { IUser } from '../../types';
+import { UserActions } from '../actions';
 
-const initialState: IState = {
-  isFetching: false,
-  user: null as IUser | null,
-};
+const initialState = null;
 
-export const UserReducer = handleActions(
-  {
-    //fetch from/to server
+export const UserReducer = handleActions<IUser | null, IUser>({
     [UserActions.Type.SET_USER]: (state, action) => action.payload,
-    //set User in State
-    [UserActions.Type.SET_USER]: (state, action) => action.payload,
-  },
-  initialState
-);
+}, initialState);

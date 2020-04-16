@@ -1,7 +1,8 @@
-import { IUser, IAuth } from "../../types";
+import { IUser } from "../../types";
+import { IAuth } from "../../types/auth";
 
-export interface IRootReducer {
-  router: any;
-  user: IUser;
-  auth: IAuth;
+export interface IRootState {
+    router: any,
+    user: IUser,
+    auth: IAuth,
 }

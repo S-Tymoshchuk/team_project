@@ -1,6 +1,8 @@
-import { all } from "redux-saga/effects";
-import { loginFlow } from "./autorization";
+import { all } from 'redux-saga/effects';
+import authSaga from './auth';
 
 export default function* rootSaga() {
-  yield all([loginFlow()]);
+    yield all([
+        authSaga(),
+    ]);
 }

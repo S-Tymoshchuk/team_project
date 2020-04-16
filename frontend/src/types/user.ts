@@ -1,24 +1,19 @@
 export interface IAddress {
-  country: string;
-  city: string;
-  addressLine1: string;
-  addressLine2: string;
+    country: string;
+    city: string;
+    addressLine1: string;
+    addressLine2: string;
 }
 
 export interface IUser {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  timeZone: string;
-  avatar: string;
-}
-
-export interface IisFetching {
-  isFetching: boolean;
-}
-
-export interface IState {
-  isFetching: boolean;
-  user: IUser | null;
+    email: string;
+    status: string;
+    avatar: string;
+    lastName: string;
+    firstName: string;
+    gender: string;
+    address: IAddress;
+    profession: string;
+    phone: string;
+    roles: Array<string>;
 }

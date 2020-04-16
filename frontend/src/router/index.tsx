@@ -1,28 +1,50 @@
-import React, { Component, Suspense } from "react";
-import { Router, Route, Switch } from "react-router-dom";
-import { history } from "../redux/store";
-import Fallback from "../components/common/fallback";
+import React, { Suspense, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { Router, Route, Switch, RouteProps } from 'react-router-dom';
+import { history } from '../redux/store';
+import Fallback from '../components/common/fallback';
+import { IRootState } from '../redux/reducers/state';
+import { IAuth } from '../types/auth';
+import 'antd/dist/antd.css';
 
-const LoginPage = React.lazy(() => import("../pages/LoginPage"));
-const SignUpPage = React.lazy(() => import("../pages/SignUpPage"));
-const PasswordRestorePage = React.lazy(() =>
-  import("../pages/PasswordRestorePage")
-);
-const CreatePostPage = React.lazy(() => import("../pages/CreatePostPage"));
+const HomePage = React.lazy(() => import('../pages/home'));
+const LoginPage = React.lazy(() => import('../pages/auth/login'));
+const SignUpPage = React.lazy(() => import('../pages/auth/signup'));
+const SignUpSuccessPage = React.lazy(() => import('../pages/auth/signUpSuccess'));
 
-export default class MainRouter extends Component {
-  render() {
-    return (
-      <Router history={history}>
-        <Suspense fallback={<Fallback />}>
-          <Switch>
-            <Route path="/login" exact component={LoginPage} />
-            <Route path="/signup" component={SignUpPage} />
-            <Route path="/password" component={PasswordRestorePage} />
-            <Route path="/create" component={CreatePostPage} />
-          </Switch>
-        </Suspense>
-      </Router>
-    );
-  }
+
+interface IMainRouterProps extends RouteProps {
+    auth: IAuth,
 }
+
+function MainRouter(props: IMainRouterProps) {
+    return (
+        <Router history={history}>
+            <Suspense fallback={<Fallback />}>
+                <Switch>
+                    {
+                        props.auth
+                            ? (
+                                <Route exact path="/" component={HomePage} />
+                            )
+                            : (
+                                <>
+                                    <Route exact path="/" component={LoginPage} />
+                                    <Route exact path="/signup" component={SignUpPage} />
+                                    <Route exact path="/signup/success" component={SignUpSuccessPage} />
+                                </>
+                            )
+                    }
+                </Switch>
+            </Suspense>
+        </Router>
+    );
+}
+
+const mapStateToProps = (state: IRootState): IMainRouterProps => ({
+    auth: state.auth,
+});
+
+export default connect(mapStateToProps)(MainRouter);
+
+
