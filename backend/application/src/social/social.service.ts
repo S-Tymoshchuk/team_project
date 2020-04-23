@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ILinkedinConnect } from './interfaces/linkedin-connect.inerface';
 import { ClientProxy, ClientProxyFactory, Transport } from '@nestjs/microservices';
+import { IAutorizUseridInterface } from './interfaces/autoriz-userid.interface';
 
 @Injectable()
 export class SocialService {
@@ -21,7 +22,8 @@ export class SocialService {
     return this.client.send('linkedinLogin', linkedinConnect).toPromise();
   }
 
-  public named(name) {
-    return this.client.send('name', name).toPromise();
+
+  public updaTeUserId(userId: IAutorizUseridInterface, {token}) {
+    return this.client.send('userId', {userId,token}).toPromise();
   }
 }

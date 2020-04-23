@@ -4,4 +4,5 @@ export interface ILinkedinConnect {
   createdAt: string;
   accessToken: string;
   expiresAt: string;
+  authorizId:string
 }

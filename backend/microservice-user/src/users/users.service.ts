@@ -33,7 +33,7 @@ export class UsersService {
       { $set: { password: hashPassword } },
     );
     await mailConfig(email, generatePassword, firstName);
-    return res;
+    return email;
   }
 
   async checkPassword(payload: any) {

@@ -2,6 +2,7 @@ import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 import { ILinkedinConnect } from './interfaces/linkedin-connect.inerface';
 import { SocialConnectService } from './social-connect.service';
+import { IUserAuthInterface } from '../interfaces/user-auth.interface';
 
 @Controller()
 export class SocialConnectController {
@@ -15,9 +16,10 @@ export class SocialConnectController {
     return this.socialConnectService.loginLinkedin(loginLinkedin);
   }
 
-  @MessagePattern('name')
-  async named(name){
-    return this.socialConnectService.named(name)
+
+  @MessagePattern('userId')
+  async updateUserId(userId:IUserAuthInterface) {
+    return this.socialConnectService.updateUser(userId);
   }
 
 }

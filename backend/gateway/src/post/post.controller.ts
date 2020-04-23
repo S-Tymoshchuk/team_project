@@ -21,9 +21,10 @@ export class PostController {
   }
 
 
-  @MessagePattern('addPost')
-  async addPost(id) {
-    return await this.postService.addPost(id);
+
+  @MessagePattern('provider')
+  async getProvider(provider){
+    return await this.postService.getProvider(provider)
   }
 
 }

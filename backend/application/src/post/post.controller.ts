@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UploadedFile, UseInterceptors, Get, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, UploadedFile, UseInterceptors, Get, UseGuards, Param, Query } from '@nestjs/common';
 import { PostService } from './post.service';
 import { IPost } from './interfaces/post.interface';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -31,16 +31,14 @@ export class PostController {
   }
 
   @Post('remove')
-  async removeFiles(@Body()fileId:IFileRemoveInterface) {
-    return this.postsService.removeFiles(fileId)
+  async removeFiles(@Body()fileId: IFileRemoveInterface) {
+    return this.postsService.removeFiles(fileId);
   }
 
-  @UseGuards(AuthGuard())
-  @Get('add')
-  async addPost(@GetUser() user) {
-    const id = user._id;
-    return this.postsService.addPost(id);
-  }
 
+  @Get('provider/:id')
+  async providerId(@Query('id')id:string) {
+    return this.postsService.getProvider(id)
+  }
 
 }

@@ -22,7 +22,7 @@ export class FilesService {
       fileId: result.public_id,
       contentType: result.resource_type,
       postId: '',
-      createdAt: moment().format(),
+      createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
     });
     const attachmentData = {
       user: files._id,

@@ -9,12 +9,19 @@ export class PostController {
   }
 
   @MessagePattern('createPost')
-  async createPost(post):Promise<IPost>{
-    return await this.postService.createPost(post)
+  async createPost(post): Promise<IPost> {
+    return await this.postService.createPost(post);
   }
+  
 
-  @MessagePattern('addPost')
-  async addPost(id){
-    return await  this.postService.addPost(id)
+  @MessagePattern('provider')
+  async getProvider(provider) {
+    if (Array.isArray(provider)) {
+      return await this.postService.getProvider(provider);
+    } else {
+      const singleItem = [provider];
+      return await this.postService.getProvider(singleItem);
+    }
+
   }
 }
