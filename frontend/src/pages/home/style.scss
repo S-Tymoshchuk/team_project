@@ -1,0 +1,37 @@
+div {
+  color: blue;
+}
+
+.some-class {
+  font-size: 128px;
+  padding: 50px;
+}
+
+.ant-layout-sider-children {
+  height: 100%;
+  margin-top: -0.1px;
+  padding-top: 0.1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+button {
+  margin: 10px 0;
+  width: 150px;
+}
+
+.ant-layout-content {
+  background-color: #ffffff;
+}
+
+.ant-layout-sider {
+  background-color: #e3e3e3;
+}
+
+.ant-layout-header {
+  background-color: #ffffff;
+}
