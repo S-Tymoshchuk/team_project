@@ -24,11 +24,6 @@ export class UserController {
     return this.userService.forgotPassword(email);
   }
 
-  //@UseGuards(AuthGuard())
-  // @Post('test')
-  // test(@GetUser() user: any) {
-  //   console.log(user);
-  // }
   @Get('test')
   async test() {
     return 'hello world';

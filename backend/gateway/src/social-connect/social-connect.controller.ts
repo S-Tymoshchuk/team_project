@@ -12,7 +12,6 @@ export class SocialConnectController {
 
   @MessagePattern('linkedinLogin')
   async loginLinkedin(loginLinkedin: ILinkedinConnect) {
-    console.log(loginLinkedin);
     return this.socialConnectService.loginLinkedin(loginLinkedin);
   }
 
