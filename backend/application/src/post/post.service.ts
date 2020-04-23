@@ -27,9 +27,10 @@ export class PostService {
   public removeFiles(file) {
     return this.client.send('removeFile', file).toPromise();
   }
+  
 
-  public addPost(id) {
-    return this.client.send('addPost', id).toPromise();
+  public getProvider(provider) {
+    return this.client.send('provider', provider).toPromise();
   }
 
 }

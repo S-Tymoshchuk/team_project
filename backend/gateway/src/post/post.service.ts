@@ -19,9 +19,10 @@ export class PostService {
   createPost(contentPost: IPost) {
     return this.client.send<string, IPost>('createPost', contentPost).toPromise();
   }
+  
 
-  addPost(id){
-    return this.client.send('addPost', id).toPromise()
+  getProvider(provider) {
+    return this.client.send('provider', provider).toPromise();
   }
 
 }
