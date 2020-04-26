@@ -1,6 +1,5 @@
 export interface IAuth {
-    accessToken: string;
-    refreshToken: string;
+    accessToken: string
 }
 
 export interface ILogin {
@@ -8,10 +7,14 @@ export interface ILogin {
     password: string;
 }
 
+
 export interface ISignUp {
     firstName: string;
-    lastName: string;
-    gender: string;
     email: string;
     password: string;
 }
+
+export interface IForgot {
+    email: string;
+}
+

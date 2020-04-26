@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 import { createAction } from 'redux-actions';
 import { IUser } from '../../types';
 
@@ -14,6 +15,3 @@ export const UserActions = {
 }
 
 export type UserActions = Omit<typeof UserActions, 'Type'>;
-
-
-

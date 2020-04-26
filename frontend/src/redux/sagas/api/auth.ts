@@ -1,26 +1,35 @@
-import axios from 'axios';
-import {ILogin, IAuth, ISignUp} from '../../../types';
-import { ContentTypes } from '.';
-import {signInURL, signUpURL} from '../../constants/auth';
+import axios from "axios"
+import {IForgot,ILogin,ISignUp} from "../../../types/auth";
 
-export function signIn (data: ILogin){
+export function signIn(data: ILogin) {
     return axios({
-        url: signInURL,
+        url: 'http://localhost:3001/user/login',
         method: 'POST',
         headers: {
-            'Content-Type': ContentTypes.APPLICATION_JSON,
+            'Content-Type': 'application/json',
         },
-        data,
-    });
+        data
+    })
 }
 
-export function signUp (data: ISignUp) {
+export function signUp(data: ISignUp) {
     return axios({
-        url: signUpURL,
+        url: 'http://localhost:3001/user/register',
         method: 'POST',
         headers: {
-            'Content-Type': ContentTypes.APPLICATION_JSON,
+            'Content-Type': 'application/json',
         },
-        data,
-    });
+        data
+    })
+}
+
+export function forgotPass(data: IForgot) {
+    return axios({
+        url: 'http://localhost:3001/user/forgot',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        data
+    })
 }
