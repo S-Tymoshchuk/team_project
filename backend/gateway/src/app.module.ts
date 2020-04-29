@@ -9,11 +9,14 @@ import { FilesController } from './files/files.controller';
 import { FilesService } from './files/files.service';
 import { FilesModule } from './files/files.module';
 import { SocialConnectModule } from './social-connect/social-connect.module';
+import { SchedulesController } from './schedules/schedules.controller';
+import { SchedulesService } from './schedules/schedules.service';
+import { SchedulesModule } from './schedules/schedules.module';
 
 @Module({
-  imports: [UserModule, PostModule, FilesModule, SocialConnectModule],
-  controllers: [UserController, PostController, FilesController],
-  providers: [UserService, PostService, FilesService],
+  imports: [UserModule, PostModule, FilesModule, SocialConnectModule, SchedulesModule],
+  controllers: [UserController, PostController, FilesController, SchedulesController],
+  providers: [UserService, PostService, FilesService, SchedulesService],
 })
 export class AppModule {
 }

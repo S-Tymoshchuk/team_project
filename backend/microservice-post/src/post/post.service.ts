@@ -8,12 +8,13 @@ import { PostTemplateService } from '../post-template/post-template.service';
 
 @Injectable()
 export class PostService {
-  constructor(@InjectModel('Post')
-              private postModel: Model<IPost>,
-              @InjectModel('SocialConnect')
-              private socialConnect: Model<SocialConnect>,
-              private postTemplate: PostTemplateService) {
-  }
+  constructor(
+    @InjectModel('Post')
+    private postModel: Model<IPost>,
+    @InjectModel('SocialConnect')
+    private socialConnect: Model<SocialConnect>,
+    private postTemplate: PostTemplateService,
+  ) {}
 
   async createPost(post): Promise<IPost> {
     const id = post._id;
@@ -28,61 +29,124 @@ export class PostService {
   }
 
   async findPost(id) {
-    const test = await this.postModel.aggregate([
+    const findPost = await this.postModel.aggregate([
       {
-        '$addFields': {
-          'convertedId': {
-            '$toString': '$_id',
+        $addFields: {
+          convertedId: {
+            $toString: '$_id',
           },
         },
-      }, {
-        '$match': {
-          'user': `${id}`,
+      },
+      {
+        $match: {
+          user: `${id}`,
         },
       },
       {
-        '$sort': {
-          'createdAt': -1,
+        $sort: {
+          createdAt: -1,
         },
-      }, {
-        '$limit': 1,
       },
       {
-        '$lookup': {
-          'from': 'attachments',
-          'localField': 'convertedId',
-          'foreignField': 'postId',
-          'as': 'image',
+        $limit: 1,
+      },
+      {
+        $lookup: {
+          from: 'attachments',
+          localField: 'convertedId',
+          foreignField: 'postId',
+          as: 'image',
         },
       },
     ]);
-    return await test;
+    return await findPost;
   }
 
   async getProvider(provider) {
     try {
       return await Promise.all(
-        provider.map(async (item) => {
+        provider.map(async item => {
           const result = await this.socialConnect.findOne({ providerId: item });
-          return this.postData(result);
+          return result;
         }),
       );
     } catch (error) {
       console.log(error);
-      throw new error;
+      throw new error();
     }
-
   }
 
-  async postData(data) {
-    const { userId } = data;
-    const postData = await this.findPost(userId);
-    const post = postData[0];
-    return await this.postTemplate.testMessage(data, post);
+  // async postData(data) {
+  //   console.log(data);
+  //   //const { userId } = data;
+  //   //const postData = await this.findPost(userId);
+  //   const post = data[0];
+  //   return await this.postTemplate.testMessage(data, post);
+  // }
+
+  async agregate(id) {
+    return await this.postModel.aggregate([
+      {
+        $addFields: {
+          convertedId: {
+            $toString: '$_id',
+          },
+        },
+      },
+      {
+        $match: {
+          convertedId: `${id}`,
+        },
+      },
+      {
+        $lookup: {
+          from: 'attachments',
+          localField: 'convertedId',
+          foreignField: 'postId',
+          as: 'image',
+        },
+      },
+      {
+        $lookup: {
+          from: 'schedules',
+          localField: 'convertedId',
+          foreignField: 'postId',
+          as: 'schedules',
+        },
+      },
+      {
+        $addFields: {
+          providerId: '$schedules.providerId',
+        },
+      },
+      {
+        $project: {
+          user: 1,
+          title: 1,
+          body: 1,
+          createdAt: 1,
+          convertedId: 1,
+          image: 1,
+          providerId: 1,
+        },
+      },
+    ]);
   }
 
+  async getPost(data) {
+    try {
+      return await Promise.all(
+        data.map(async item => {
+          const post = await this.agregate(item.postId);
+          const provider = await this.getProvider(item.providerId);
+          return await this.postTemplate.testMessage(provider, post);
+        }),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
-
 
 /*
 1.Form data Данные поста и файлы
