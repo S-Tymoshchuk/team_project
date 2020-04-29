@@ -4,9 +4,7 @@ import { FilesService } from './files.service';
 
 @Controller('files')
 export class FilesController {
-  constructor(private fileService: FilesService) {
-  }
-
+  constructor(private fileService: FilesService) {}
 
   @MessagePattern('uploadFiles')
   async uploadFiles(files) {

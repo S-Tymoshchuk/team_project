@@ -5,14 +5,12 @@ import { PostService } from './post.service';
 
 @Controller('post')
 export class PostController {
-  constructor(private postService: PostService) {
-  }
+  constructor(private postService: PostService) {}
 
   @MessagePattern('createPost')
   async createPost(post): Promise<IPost> {
     return await this.postService.createPost(post);
   }
-  
 
   @MessagePattern('provider')
   async getProvider(provider) {
@@ -22,6 +20,10 @@ export class PostController {
       const singleItem = [provider];
       return await this.postService.getProvider(singleItem);
     }
+  }
 
+  @MessagePattern('schedule')
+  async getScheduls(data) {
+    return await this.postService.getPost(data);
   }
 }
