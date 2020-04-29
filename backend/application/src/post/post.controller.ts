@@ -45,8 +45,6 @@ export class PostController {
 
   @Get('provider/:id')
   async providerId(@Query('id') id: string) {
-    console.log(id);
-
     return this.postsService.getProvider(id);
   }
 }

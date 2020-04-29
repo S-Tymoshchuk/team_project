@@ -18,7 +18,7 @@ export class SocialController {
   async connectLink(@GetUser() user, @Body() client) {
     const code = await axios({
       method: 'get',
-      url: `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client.clientId}&redirect_uri=https://www.example.com/auth/linkedin&scope=r_liteprofile%20r_emailaddress%20w_member_social`,
+      url: `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${client.clientId}&redirect_uri=${process.env.REDIRECT_URI}&scope=r_liteprofile%20r_emailaddress%20w_member_social`,
     });
     return code.data;
   }
@@ -29,9 +29,9 @@ export class SocialController {
     const exchangeCode = {
       grant_type: 'authorization_code',
       code: `${loginData.code}`,
-      redirect_uri: 'https://www.example.com/auth/linkedin',
-      client_id: '78j0bx7od67w2b',
-      client_secret: 'mPyV2phZr6lfE4aA',
+      redirect_uri: process.env.REDIRECT_URI,
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
     };
 
     try {
