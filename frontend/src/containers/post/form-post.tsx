@@ -13,7 +13,20 @@ import uniqid from 'uniqid';
 import moment from 'moment';
 import {IPost} from "../../types/post";
 
-//type IPostForm = ReturnType<typeof mapDispatchToProps> & typeof mapStateToProps;  надо спросить
+interface ISchedule{
+    providerId: string[],
+    startsAt: string,
+    notify: boolean,
+    status: string
+}
+
+interface State{
+    title:string
+    body:string
+    fileId: string[]
+    schedule:ISchedule
+}
+
 const initialState = {
     title: '',
     body: '',
@@ -26,7 +39,9 @@ const initialState = {
     }
 };
 
-const reducer = (state: any, action: any) => {
+type Action = {type:'SET_TITLE', payload:string} | {type:'SET_BODY', payload:string} | {type:'SET_DATE', payload:any} | {type:'CLEAN_INPUTS'}
+
+const reducer = (state: State, action: Action) => {
 
     switch (action.type) {
         case 'SET_TITLE': {
@@ -60,20 +75,19 @@ const PostFrom = (props: any) => {
     const [form] = Form.useForm();
 
     const setData = (values: any) => {
-
         dispatch({type: "SET_DATE", payload: values})
     };
-    const titleInput = (e: any) => {
+    const titleInput:React.ReactEventHandler<HTMLInputElement> = (e) => {
         const text = e.currentTarget.value;
         dispatch({type: 'SET_TITLE', payload: text});
     };
-    const bodyInput = (e: any) => {
+    const bodyInput:React.ReactEventHandler<HTMLTextAreaElement> = (e) => {
         const text = e.currentTarget.value;
         dispatch({type: 'SET_BODY', payload: text});
     };
 
     const addMessage = () => {
-        const fileId = props.image.attachment.map((item:IImage) => item.fileId);
+        const fileId = props.image.attachment.map((item: IImage) => item.fileId);
         const post = {
             id: uniqid(),
             time: moment().format('HH:mm'),
@@ -102,7 +116,7 @@ const PostFrom = (props: any) => {
                 </div>
                 <div style={{marginTop: '20px'}}>
 
-                    <Input.TextArea  onChange={bodyInput} value={state.body} placeholder="Body Post"/>
+                    <Input.TextArea onChange={bodyInput} value={state.body} placeholder="Body Post"/>
                 </div>
                 <div>
                     <ImageLoader
@@ -112,7 +126,7 @@ const PostFrom = (props: any) => {
                     />
                 </div>
                 <Form.Item wrapperCol={{span: 12, offset: 17}}>
-                    <Button type="primary" htmlType="submit" style={{backgroundColor:'#99a8b9', border:"none"}}>
+                    <Button type="primary" htmlType="submit" style={{backgroundColor: '#99a8b9', border: "none"}}>
                         To Post
                     </Button>
                 </Form.Item>

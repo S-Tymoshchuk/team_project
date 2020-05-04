@@ -20,5 +20,5 @@ export interface IUser {
 
 export interface IUserInt {
     avatar: string
-    login: string
+    firstName: string
 }

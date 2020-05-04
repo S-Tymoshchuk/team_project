@@ -70,6 +70,8 @@ const ForgotForm = (props: IForgotProps) => {
     )
 }
 
+
+
 const WrapForm = styled.div`
     width:300px;
 margin: 92px  auto 0 auto;

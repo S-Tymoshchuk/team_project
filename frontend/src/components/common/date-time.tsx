@@ -6,7 +6,7 @@ interface IDateInput {
     getDate(values: any): void
 }
 
-const DataTime: React.FC<IDateInput> = (props) => {
+const DataTime = (props:IDateInput) => {
     const getDate = (date: any) => {
         const time = moment(date).format('YYYY-MM-DD HH:mm:ss');
         props.getDate(time)

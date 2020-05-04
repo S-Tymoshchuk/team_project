@@ -15,7 +15,7 @@ interface IPostForm {
     images: any;
 }
 
-const ImageLoader: React.FC<IPostForm> = (props) => {
+const ImageLoader = (props:IPostForm) => {
 
     const getImage = (e: any) => {
         const fileId = e.target.files[0];

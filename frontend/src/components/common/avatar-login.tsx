@@ -5,12 +5,12 @@ import {connect} from "react-redux";
 import {UserOutlined} from "@ant-design/icons";
 import styled from "styled-components";
 
-
-const AvatarLogin = (props:any) => {
+type IAvatar = ReturnType<typeof mapStateToProps>
+const AvatarLogin = (props:IAvatar) => {
 
     return (
         <WrapAvatar>
-            <Span>{props.user.login}</Span>
+            <Span>{props.user.firstName}</Span>
 
             <Avatar
                 size={48}
