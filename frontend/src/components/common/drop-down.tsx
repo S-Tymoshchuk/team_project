@@ -10,7 +10,7 @@ const logout = () => {
 const menu = (
   <Menu>
     <Menu.Item key="0">
-      <a href="http://www.alipay.com/">Settings</a>
+      <a href="#">Settings</a>
     </Menu.Item>
     <Menu.Item key="1">
       <a onClick={() => logout()}>Log Out</a>

@@ -4,6 +4,7 @@ import {CloseCircleFilled} from "@ant-design/icons";
 import styled from "styled-components";
 import Input from "antd/lib/input";
 import { Typography } from 'antd';
+import {IImage} from "../../types/attachment";
 const { Text } = Typography;
 
 interface IPostForm {
@@ -30,7 +31,7 @@ const ImageLoader: React.FC<IPostForm> = (props) => {
     return (
         <div>
             <div className="wrap-image">
-                {props.images.attachment.map((item: any) => {
+                {props.images.attachment.map((item: IImage) => {
                     const id = item.fileId;
                     return (
                         <WrapPost

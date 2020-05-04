@@ -17,3 +17,8 @@ export interface IUser {
     phone: string;
     roles: Array<string>;
 }
+
+export interface IUserInt {
+    avatar: string
+    login: string
+}

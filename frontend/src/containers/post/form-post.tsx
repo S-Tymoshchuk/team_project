@@ -56,7 +56,6 @@ const reducer = (state: any, action: any) => {
 
 
 const PostFrom = (props: any) => {
-
     const [state, dispatch] = useReducer(reducer, initialState);
     const [form] = Form.useForm();
 
@@ -74,7 +73,7 @@ const PostFrom = (props: any) => {
     };
 
     const addMessage = () => {
-        const fileId = props.image.attachment.map((item: any) => item.fileId);
+        const fileId = props.image.attachment.map((item:IImage) => item.fileId);
         const post = {
             id: uniqid(),
             time: moment().format('HH:mm'),

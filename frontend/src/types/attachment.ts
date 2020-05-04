@@ -7,3 +7,4 @@ export interface IImage {
 export interface IRemoveImage {
   id: string;
 }
+

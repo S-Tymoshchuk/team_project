@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 import {Button, Col, Form, Input, Row} from "antd";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
@@ -17,6 +17,10 @@ const ForgotForm = (props: IForgotProps) => {
         props.handleSubmit(values);
     };
 
+    const memoRules = useMemo(() => {
+        return [{required: true, message: 'Please input your username!'}]
+    }, []);
+
     return (
         <div>
             <Row>
@@ -28,7 +32,7 @@ const ForgotForm = (props: IForgotProps) => {
                             <Form.Item
                                 label="Email"
                                 name="email"
-                                rules={[{required: true, message: 'Please input your username!'}]}
+                                rules={memoRules}
                             >
                                 <Input/>
                             </Form.Item>
