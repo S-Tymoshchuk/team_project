@@ -22,6 +22,8 @@ export class AuthService {
     };
 
     const token = await this.jwtService.sign(createToken, { expiresIn: '7d' });
-    return { accessToken: token };
+    return { accessToken: token,
+      login: user.firstName,
+      avatar: user.avatar, };
   }
 }
