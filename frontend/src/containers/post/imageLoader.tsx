@@ -3,8 +3,9 @@ import "./style.css";
 import {CloseCircleFilled} from "@ant-design/icons";
 import styled from "styled-components";
 import Input from "antd/lib/input";
-import { Typography } from 'antd';
+import {Typography} from 'antd';
 import {IImage} from "../../types/attachment";
+
 const { Text } = Typography;
 
 interface IPostForm {
@@ -38,8 +39,7 @@ const ImageLoader = (props:IPostForm) => {
                             key={item.fileId}
                         >
                             <a className="close" onClick={() => removeItem(id)}>
-                                <CloseCircleFilled
-                                    style={{backgroundColor: "white", borderRadius: "10px"}}
+                                <CloseCircleFilled className='close'
                                 />
                             </a>
                             <img src={item.link} alt="image" className="image-preview"/>
@@ -54,10 +54,11 @@ const ImageLoader = (props:IPostForm) => {
                 type="file"
                 onChange={getImage}
             />
-            <label style={{marginTop: '30px'}} htmlFor="file"><Text  style={{color:'white'}}>Choose a file</Text></label>
+            <label className='label' htmlFor="file"><Text className='label-text'>Choose a file</Text></label>
         </div>
     );
 };
+
 
 const WrapPost = styled.div`
   display: block;

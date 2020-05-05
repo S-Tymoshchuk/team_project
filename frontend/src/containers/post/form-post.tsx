@@ -1,5 +1,5 @@
-import React, {Dispatch, useEffect, useReducer} from "react";
-import {Form, Input, Button} from "antd";
+import React, {Dispatch, useReducer} from "react";
+import {Button, Form, Input} from "antd";
 import styled from "styled-components";
 import "./style.css";
 import ImageLoader from "./imageLoader";
@@ -13,18 +13,18 @@ import uniqid from 'uniqid';
 import moment from 'moment';
 import {IPost} from "../../types/post";
 
-interface ISchedule{
+interface ISchedule {
     providerId: string[],
     startsAt: string,
     notify: boolean,
     status: string
 }
 
-interface State{
-    title:string
-    body:string
+interface State {
+    title: string
+    body: string
     fileId: string[]
-    schedule:ISchedule
+    schedule: ISchedule
 }
 
 const initialState = {
@@ -39,7 +39,11 @@ const initialState = {
     }
 };
 
-type Action = {type:'SET_TITLE', payload:string} | {type:'SET_BODY', payload:string} | {type:'SET_DATE', payload:any} | {type:'CLEAN_INPUTS'}
+type Action =
+    { type: 'SET_TITLE', payload: string }
+    | { type: 'SET_BODY', payload: string }
+    | { type: 'SET_DATE', payload: any }
+    | { type: 'CLEAN_INPUTS' }
 
 const reducer = (state: State, action: Action) => {
 
@@ -77,11 +81,11 @@ const PostFrom = (props: any) => {
     const setData = (values: any) => {
         dispatch({type: "SET_DATE", payload: values})
     };
-    const titleInput:React.ReactEventHandler<HTMLInputElement> = (e) => {
+    const titleInput: React.ReactEventHandler<HTMLInputElement> = (e) => {
         const text = e.currentTarget.value;
         dispatch({type: 'SET_TITLE', payload: text});
     };
-    const bodyInput:React.ReactEventHandler<HTMLTextAreaElement> = (e) => {
+    const bodyInput: React.ReactEventHandler<HTMLTextAreaElement> = (e) => {
         const text = e.currentTarget.value;
         dispatch({type: 'SET_BODY', payload: text});
     };
@@ -109,12 +113,12 @@ const PostFrom = (props: any) => {
     return (
         <WrapForm>
             <Form form={form} layout={"vertical"} onFinish={addMessage}>
-                <div style={{display: 'flex', justifyContent: "space-between", alignItems: 'center'}}>
+                <WrapInput>
                     <Input onChange={titleInput} value={state.title} style={{width: "200px"}}
                            placeholder="Title Post"/>
                     <DataTime getDate={setData}/>
-                </div>
-                <div style={{marginTop: '20px'}}>
+                </WrapInput>
+                <div className='form-text-area'>
 
                     <Input.TextArea onChange={bodyInput} value={state.body} placeholder="Body Post"/>
                 </div>
@@ -134,6 +138,12 @@ const PostFrom = (props: any) => {
         </WrapForm>
     );
 };
+
+const WrapInput = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+`
 
 const WrapForm = styled.div`
   background-color: #e3e3e3;

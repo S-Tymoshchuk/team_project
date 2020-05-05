@@ -1,28 +1,16 @@
-/* .fileContainer .uploadPictureContainer {
-  width: 20%;
-  padding: 0;
-  margin: 10px;
+.form-text-area {
+  margin: 20px 0;
 }
-
-.fileContainer .deleteImage {
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  line-height: 22px;
+.close{
+  background-color: #ffffff;
+  border-radius: 10px;
 }
-
-.fileContainer {
-  padding: 30px 0;
-  height: 190px;
+.label{
+  margin-top: 30px;
 }
-.fileContainer .uploadPicturesWrapper {
-  margin-top: -80px;
+.label-text{
+  color: #ffffff;
 }
-
-.fileContainer .chooseFileButton {
-  position: absolute;
-  margin-top: 50px;
-} */
 .inputfile {
   width: 0.1px;
   height: 0.1px;

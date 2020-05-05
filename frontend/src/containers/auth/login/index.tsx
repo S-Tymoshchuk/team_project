@@ -1,30 +1,39 @@
-import React from "react";
+import React, {useMemo} from "react";
 import styled from 'styled-components'
-import {Form, Input, Button, Row, Col, Typography} from 'antd';
+import {Button, Col, Form, Input, Row, Typography} from 'antd';
 import {ILogin} from "../../../types/auth";
 import {Link} from "react-router-dom";
+import './style.css'
 
 const {Text} = Typography;
 
 interface ILoginFormProps {
-    handleSubmit(values:ILogin):void
+    handleSubmit(values: ILogin): void
 }
 
-const LoginForm = (props:ILoginFormProps) => {
+const LoginForm = (props: ILoginFormProps) => {
     const [form] = Form.useForm();
 
-    const onFinish = (values:any) => {
+    const onFinish = (values: any) => {
         props.handleSubmit(values);
     };
 
+    const memoEmailInput = useMemo(() => {
+        return [{required: true, message: 'Please input your username!'}]
+    }, []);
+
+    const memoPasswordInput = useMemo(() => {
+        return [{required: true, message: 'Please input your password!'}]
+    }, []);
+
     return (
         <div>
-            <div style={{display: "flex", justifyContent: "space-between"}}>
+            <div className='header'>
                 <div>
                 </div>
                 <Header>
                     <p>Don't have an account?</p>
-                    <Link type='link' to="/signup"  style={{color: 'gray', padding: '0 5px', textDecoration: "underline"}}>
+                    <Link className='header-link' type='link' to="/signup">
                         Sign Up
                     </Link>
                 </Header>
@@ -38,7 +47,7 @@ const LoginForm = (props:ILoginFormProps) => {
                             <Form.Item
                                 label="Email"
                                 name="email"
-                                rules={[{required: true, message: 'Please input your username!'}]}
+                                rules={memoEmailInput}
                             >
                                 <Input/>
                             </Form.Item>
@@ -46,19 +55,13 @@ const LoginForm = (props:ILoginFormProps) => {
                             <Form.Item
                                 label="Password"
                                 name="password"
-                                rules={[{required: true, message: 'Please input your password!'}]}
+                                rules={memoPasswordInput}
                             >
                                 <Input.Password/>
                             </Form.Item>
                             <Form.Item>
                                 <WrapButton>
                                     <Button type="default"
-                                            style={{
-                                                padding: '4px 30px',
-                                                backgroundColor: "#c4c4c4",
-                                                outline: "none",
-                                                color: "white"
-                                            }}
                                             htmlType="submit"
                                             className="login-form-button">
                                         Log in Now
@@ -75,12 +78,7 @@ const LoginForm = (props:ILoginFormProps) => {
                                 </Col>
                             </Row>
                             <Form.Item>
-                                <div style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    paddingTop: '10px'
-                                }}>
+                                <div className='social-button'>
                                     <Text>Log in with:</Text>
                                     {<Button style={{margin: '0 10px'}} shape={"circle"} size={"large"}><ImgButtonSoc
                                         src='/facebook.png'/></Button>}

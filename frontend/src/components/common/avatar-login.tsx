@@ -38,5 +38,5 @@ const WrapAvatar = styled.div`
 const Span = styled.span`
 margin-right: 15px;
 color: #000000;
-`
+`;
 export default connect(mapStateToProps)(AvatarLogin);

@@ -12,10 +12,7 @@ export default function Home() {
     return (
         <Layout>
             <Sider
-                className="name"
-                style={{
-                    height: "100vh",
-                }}
+                className="left-sidebar"
             >
                 <div className="left-sidebar">
                     <Menu
@@ -46,7 +43,6 @@ export default function Home() {
                 </Content>
             </Layout>
             <Sider
-                style={{backgroundColor: "#e3e3e3", padding: "0 35px"}}
                 width={470}
                 className="right-sidebar"
             >

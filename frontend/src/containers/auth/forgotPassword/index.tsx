@@ -3,6 +3,7 @@ import {Button, Col, Form, Input, Row} from "antd";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {IForgot} from "../../../types/auth";
+import "./index.css";
 
 
 interface IForgotProps {
@@ -38,26 +39,11 @@ const ForgotForm = (props: IForgotProps) => {
                             </Form.Item>
                             <WrapButton>
                                 <Button type="default"
-                                        style={{
-                                            width: '40%',
-                                            backgroundColor: "#c4c4c4",
-                                            outline: "none",
-                                            color: "white"
-                                        }}
                                         htmlType="submit"
                                         className="login-form-button">
                                     Reset
                                 </Button>
-                                <Link type='link' to='/'
-                                      style={{
-                                          padding: '5px 15px',
-                                          margin: '1px',
-                                          textAlign: 'center',
-                                          width: '40%',
-                                          backgroundColor: "#f6f6fa",
-                                          color: "black",
-                                          outline: "none"
-                                      }}
+                                <Link className='link' type='link' to='/'
                                 >
                                     Back
                                 </Link>
