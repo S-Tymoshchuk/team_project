@@ -1,3 +1,5 @@
 export interface IAccessToken {
-  accessToken: string
+  accessToken: string;
+  firstName: string;
+  avatar: string;
 }
