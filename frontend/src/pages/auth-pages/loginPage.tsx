@@ -15,9 +15,11 @@ function Login(props: ILoginContainerProps) {
     )
 }
 
+interface IDispatch {
+    signIn(values:ILogin):void
+}
 
-
-const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+const mapDispatchToProps = (dispatch: Dispatch<any>):IDispatch => {
     return {
         signIn: (payload: ILogin) => dispatch(AuthActions.signIn(payload))
     }

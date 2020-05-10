@@ -6,6 +6,7 @@ import {IRootReducer} from "./state";
 import {AuthReducer} from "./auth";
 import {AttachmentReducer} from "./attachment";
 import {PostReducer} from "./post";
+import {SocialReducer} from "./social";
 
 // NOTE: current type definition of Reducer in 'redux-actions' module
 // doesn't go well with redux@4
@@ -14,7 +15,8 @@ const rootReducer = combineReducers<IRootReducer>({
     user: UserReducer as any,
     auth: AuthReducer as any,
     attachment: AttachmentReducer as any,
-    post: PostReducer as any
+    post: PostReducer as any,
+    social: SocialReducer as any
 });
 
 export default rootReducer;

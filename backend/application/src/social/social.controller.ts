@@ -26,10 +26,11 @@ export class SocialController {
   @UseGuards(AuthGuard())
   @Post('linkedin')
   async createAccesToken(@GetUser() user, @Body() loginData: ILoginData) {
+    console.log(loginData)
     const exchangeCode = {
       grant_type: 'authorization_code',
       code: `${loginData.code}`,
-      redirect_uri: process.env.REDIRECT_URI,
+      redirect_uri: 'http://localhost:3000/social',
       client_id: process.env.CLIENT_ID,
       client_secret: process.env.CLIENT_SECRET,
     };

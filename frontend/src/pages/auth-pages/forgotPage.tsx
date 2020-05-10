@@ -16,7 +16,11 @@ const ForgotPasswordPage = (props: IForgotPassword) => {
 
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+interface IDispatchProps {
+    forgotPass(values: IForgot):void
+}
+
+const mapDispatchToProps = (dispatch: Dispatch<any>):IDispatchProps => ({
     forgotPass: (payload: IForgot) => dispatch(AuthActions.forgotPass(payload))
 });
 

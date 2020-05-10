@@ -27,7 +27,7 @@ export const AttachmentReducer = handleActions(
             };
             return newItem
         },
-        [AttachmentActions.Type.CLEAR_IMAGE]:(state, action)=> initialState
+        [AttachmentActions.Type.CLEAR_IMAGE]:()=> initialState
 
     },
     initialState

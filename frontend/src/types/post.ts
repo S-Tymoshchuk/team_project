@@ -1,7 +1,7 @@
 
 export interface IPost {
     id: string,
-    time: Date,
+    time: string,
     title: string,
     body: string,
     fileId: string[],

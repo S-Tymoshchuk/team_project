@@ -3,6 +3,9 @@ export interface IImage {
   link: string;
   user: string;
 }
+export interface IAttachment {
+  attachment:IImage[]
+}
 
 export interface IRemoveImage {
   id: string;

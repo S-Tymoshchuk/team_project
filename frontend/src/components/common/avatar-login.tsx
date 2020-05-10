@@ -4,6 +4,7 @@ import {IRootReducer} from "../../redux/reducers/state";
 import {connect} from "react-redux";
 import {UserOutlined} from "@ant-design/icons";
 import styled from "styled-components";
+import {IUserInt} from "../../types";
 
 type IAvatar = ReturnType<typeof mapStateToProps>
 const AvatarLogin = (props:IAvatar) => {
@@ -11,7 +12,6 @@ const AvatarLogin = (props:IAvatar) => {
     return (
         <WrapAvatar>
             <Span>{props.user.firstName}</Span>
-
             <Avatar
                 size={48}
                 icon={
@@ -26,7 +26,11 @@ const AvatarLogin = (props:IAvatar) => {
     );
 };
 
-const mapStateToProps = (state: IRootReducer) => ({
+interface IUserI {
+    user: IUserInt
+}
+
+const mapStateToProps = (state: IRootReducer): IUserI => ({
     user: state.user,
 });
 
