@@ -14,7 +14,7 @@ const PostMessage = (props: IPostMessage) => {
         <div>
             <h1 className='title'>Agenda</h1>
             <WrapContent>
-                <h1>April 4</h1></WrapContent>
+                <h1>April 8</h1></WrapContent>
             {
                 props.post.map((item: IPost) => {
                     return (<ContentItem key={item.id}>
@@ -39,8 +39,11 @@ const PostMessage = (props: IPostMessage) => {
         </div>
     )
 };
+interface IMapStateToProps {
+    post: IPost[]
+}
 
-const mapStateToProps = (state: IRootReducer) => {
+const mapStateToProps = (state: IRootReducer): IMapStateToProps => {
     return {
         post: state.post
     }

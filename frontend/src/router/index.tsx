@@ -1,19 +1,20 @@
-import React, { Suspense } from "react";
-import { Router, Route, Switch, RouteProps } from "react-router-dom";
-import { history } from "../redux/store";
+import React, {Suspense} from "react";
+import {Route, RouteProps, Router, Switch} from "react-router-dom";
+import {history} from "../redux/store";
 import Fallback from "../components/common/fallback";
-import { connect } from "react-redux";
-import { IRootReducer } from "../redux/reducers/state";
-import { IAuth } from "../types/auth";
+import {connect} from "react-redux";
+import {IRootReducer} from "../redux/reducers/state";
+import {IAuth} from "../types/auth";
 
 const HomePage = React.lazy(() => import("../pages/home"));
+const WithRouterSocialPage = React.lazy(() => import("../pages/post/social/social-page"));
 const Login = React.lazy(() => import("../pages/auth-pages/loginPage"));
 const Register = React.lazy(() => import("../pages/auth-pages/signUpPage"));
 const SignUpSuccessPage = React.lazy(() =>
-  import("../pages/auth-pages/signUpSuccess")
+    import("../pages/auth-pages/signUpSuccess")
 );
 const ForgotPassword = React.lazy(() =>
-  import("../pages/auth-pages/forgotPage")
+    import("../pages/auth-pages/forgotPage")
 );
 const ForgotPasswordSuccess = React.lazy(() =>
   import("../pages/auth-pages/forgotPassSuccess")
@@ -29,11 +30,14 @@ function MainRouter(props: IMainRouterProps) {
       <Suspense fallback={<Fallback />}>
         <Switch>
           {props.auth ? (
-            <Route exact path="/" component={HomePage} />
+              <>
+                  <Route exact path="/" component={HomePage}/>
+                  <Route exact path="/social" component={WithRouterSocialPage}/>
+              </>
           ) : (
             <>
-              <Route exact path="/" component={Login} />
-              <Route exact path="/signup" component={Register} />
+                <Route exact path="/" component={Login}/>
+                <Route exact path="/signup" component={Register}/>
               <Route
                 exact
                 path="/signup/success"

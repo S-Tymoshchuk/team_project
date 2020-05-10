@@ -4,7 +4,7 @@ import styled from "styled-components";
 import "./style.css";
 import ImageLoader from "./imageLoader";
 import {connect} from "react-redux";
-import {IImage, IRemoveImage} from "../../types/attachment";
+import {IAttachment, IImage, IRemoveImage} from "../../types/attachment";
 import {IRootReducer} from "../../redux/reducers/state";
 import DataTime from "../../components/common/date-time";
 import {AttachmentActions} from "../../redux/actions/attachment";
@@ -74,7 +74,27 @@ const reducer = (state: State, action: Action) => {
 };
 
 
-const PostFrom = (props: any) => {
+interface IMapStateProps {
+    image: IAttachment
+
+}
+
+interface IDispatchProps {
+    addImage(values: IImage): void
+
+    removeImage(values: IRemoveImage): void
+
+    addPost(values: IPost): void
+
+    savePost(values: any): void
+
+    clearImage(): void
+}
+
+type IPropsForm = IMapStateProps & IDispatchProps
+
+const PostFrom = (props: IPropsForm) => {
+
     const [state, dispatch] = useReducer(reducer, initialState);
     const [form] = Form.useForm();
 
@@ -94,7 +114,7 @@ const PostFrom = (props: any) => {
         const fileId = props.image.attachment.map((item: IImage) => item.fileId);
         const post = {
             id: uniqid(),
-            time: moment().format('HH:mm'),
+            time: moment().format('YYYY-MM-DD HH:mm:ss'),
             title: state.title,
             body: state.body,
             fileId: fileId,
@@ -106,36 +126,40 @@ const PostFrom = (props: any) => {
             }
         };
         props.addPost(post);
+        props.savePost(post);
         dispatch({type: 'CLEAN_INPUTS'});
         props.clearImage()
     };
 
     return (
-        <WrapForm>
-            <Form form={form} layout={"vertical"} onFinish={addMessage}>
-                <WrapInput>
-                    <Input onChange={titleInput} value={state.title} style={{width: "200px"}}
-                           placeholder="Title Post"/>
-                    <DataTime getDate={setData}/>
-                </WrapInput>
-                <div className='form-text-area'>
+        <div>
+            <WrapForm>
+                <Form form={form} layout={"vertical"} onFinish={addMessage}>
+                    <WrapInput>
+                        <Input onChange={titleInput} value={state.title} style={{width: "200px"}}
+                               placeholder="Title Post"/>
+                        <DataTime getDate={setData}/>
+                    </WrapInput>
+                    <div className='form-text-area'>
 
-                    <Input.TextArea onChange={bodyInput} value={state.body} placeholder="Body Post"/>
-                </div>
-                <div>
-                    <ImageLoader
-                        handleSubmit={props.addImage}
-                        images={props.image}
-                        removeItem={props.removeImage}
-                    />
-                </div>
-                <Form.Item wrapperCol={{span: 12, offset: 17}}>
-                    <Button type="primary" htmlType="submit" style={{backgroundColor: '#99a8b9', border: "none"}}>
-                        To Post
-                    </Button>
-                </Form.Item>
-            </Form>
-        </WrapForm>
+                        <Input.TextArea onChange={bodyInput} value={state.body} placeholder="Body Post"/>
+                    </div>
+
+                    <div>
+                        <ImageLoader
+                            handleSubmit={props.addImage}
+                            images={props.image}
+                            removeItem={props.removeImage}
+                        />
+                    </div>
+                    <Form.Item wrapperCol={{span: 12, offset: 17}}>
+                        <Button type="primary" htmlType="submit" style={{backgroundColor: '#99a8b9', border: "none"}}>
+                            To Post
+                        </Button>
+                    </Form.Item>
+                </Form>
+            </WrapForm>
+        </div>
     );
 };
 
@@ -152,15 +176,17 @@ const WrapForm = styled.div`
   height: 400px;
 `;
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): IDispatchProps => ({
     addImage: (payload: IImage) => dispatch(AttachmentActions.addImage(payload)),
     removeImage: (payload: IRemoveImage) =>
         dispatch(AttachmentActions.removeImage(payload)),
     clearImage: () => dispatch(AttachmentActions.clearImage()),
-    addPost: (payload: IPost) => dispatch(PostActions.addPost(payload))
+    addPost: (payload: IPost) => dispatch(PostActions.addPost(payload)),
+    savePost: (payload: any) => dispatch(PostActions.setPost(payload))
+
 });
 
-const mapStateToProps = (state: IRootReducer) => ({
+const mapStateToProps = (state: IRootReducer): IMapStateProps => ({
     image: state.attachment
 });
 

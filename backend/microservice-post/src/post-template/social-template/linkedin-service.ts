@@ -1,17 +1,19 @@
 import axios from 'axios';
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { ISchedule } from './interface/schedule.interface';
+import {Injectable} from '@nestjs/common';
+import {InjectModel} from '@nestjs/mongoose';
+import {Model} from 'mongoose';
+import {ISchedule} from './interface/schedule.interface';
 
 @Injectable()
 export class LinkedinTemplate {
   constructor(
-    @InjectModel('Schedule')
-    private scheduleModel: Model<ISchedule>,
-  ) {}
+      @InjectModel('Schedule')
+      private scheduleModel: Model<ISchedule>,
+  ) {
+  }
 
   async linkedinMessage(data, post) {
+    console.log(data)
     const postId = post[0]._id;
     const resData = {
       content: {
@@ -52,11 +54,11 @@ export class LinkedinTemplate {
   }
 
   async updateSchedule(id) {
-    return await this.scheduleModel.updateOne(
-      {
-        postId: id,
-      },
-      { $set: { status: 'resolve' } },
+    return this.scheduleModel.updateOne(
+        {
+          postId: id,
+        },
+        {$set: {status: 'resolve'}},
     );
   }
 }

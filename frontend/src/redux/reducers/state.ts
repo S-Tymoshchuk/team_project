@@ -1,11 +1,14 @@
-import { IUser } from "../../types";
-import { IAuth } from "../../types/auth";
-import { IImage } from "../../types/attachment";
+import {IUser, IUserInt} from "../../types";
+import {IAuth} from "../../types/auth";
+import {IAttachment} from "../../types/attachment";
+import {IPost} from "../../types/post";
+import { ISocial } from "../../types/social";
 
 export interface IRootReducer {
   router: any;
-  user: IUser;
+  user: IUserInt;
   auth: IAuth;
-  attachment: IImage;
-  post:any
+  attachment: IAttachment;
+  post: IPost[],
+  social:ISocial
 }

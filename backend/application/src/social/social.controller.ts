@@ -26,6 +26,7 @@ export class SocialController {
   @UseGuards(AuthGuard())
   @Post('linkedin')
   async createAccesToken(@GetUser() user, @Body() loginData: ILoginData) {
+
     const exchangeCode = {
       grant_type: 'authorization_code',
       code: `${loginData.code}`,

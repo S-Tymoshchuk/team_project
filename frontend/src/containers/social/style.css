@@ -1,0 +1,91 @@
+.auth-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 95%;
+    background-color: #e3e3e3;
+    height: 500px;
+    margin: 0 20px;
+    padding: 0 20px;
+}
+.auth-container__user{
+    display: flex;
+}
+
+
+.auth-container__item {
+    position: relative;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    height: 100px;
+    padding: 15px;
+    margin-right: 20px;
+    margin-top: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.auth-checkbox {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 5px;
+    margin-right: 8px;
+}
+
+.auth-social-card__img{
+    width: 35px;
+    height: 35px;
+    margin-right: 17px;
+}
+.auth-social-content{
+    display: flex;
+    align-items: center;
+}
+.auth-social-card__text{
+    font-size: 17px;
+    color: #000000;
+    font-weight: 500;
+}
+.auth-social-wrap{
+    display: flex;
+}
+.auth-social-item{
+    margin-right: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.link-profiles{
+    margin-top: 50px;
+    margin-bottom: 40px;
+    color: #000000;
+}
+.auth-social-button{
+    height: 55px;
+    border: none;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+.footer-button{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+.auth-text{
+    color: #000000;
+    font-weight: 600;
+    font-size: 15px;
+}
+.auth-text_personal{
+    color: gray;
+    margin-top: 5px;
+}
+.avatar-soc{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 28px;
+    left: -15px;
+}
