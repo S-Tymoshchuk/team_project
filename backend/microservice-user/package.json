@@ -32,7 +32,7 @@
     "@sendgrid/mail": "^6.5.5",
     "bcrypt": "^4.0.1",
     "dotenv": "^8.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mongoose": "^5.9.5",
     "mongoose-unique-validator": "^2.0.3",
     "passport": "^0.4.1",
