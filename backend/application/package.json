@@ -30,7 +30,7 @@
     "@nestjs/passport": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "@types/qs": "^6.9.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "form-data": "^3.0.0",
     "moment": "^2.24.0",
     "mongoose": "^5.9.7",
